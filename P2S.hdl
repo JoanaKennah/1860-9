@@ -4,7 +4,7 @@ CHIP P2S {
 
     PARTS:
     Register(in=indata[4], load=load);
-    Shift(in=in, enable=enable)
+    Shift(in=in, enable=enable);
 
     And(a=Register[0], b=Shift[0], out=w);
     And(a=Register[1], b=Shift[1], out=x);
