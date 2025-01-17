@@ -3,8 +3,9 @@ CHIP Shift {
     OUT out[4], carryOut;
 
     PARTS:
-    Or(a=false,b=in[3],out=out[2]);
-	Or(a=false,b=in[2],out=out[1]);
-	Or(a=false,b=in[1],out=out[0]);
-	Or(a=false,b=in[0],out=carryOut);
+    Or(a=false,b=in[0],out=out[1]);
+	Or(a=false,b=in[1],out=out=[2]);
+    Or(a=false,b=in[2],out=out[3]);
+    Or(a=false,b=in[3],out=carryOut);
+
 }
