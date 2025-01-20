@@ -3,7 +3,11 @@ CHIP P2S {
     OUT sout, complete;
 
     PARTS:
-    Register(in=indata[0..3], load=load, out=out[4]);
+    Bit(in=indata[0],load=load,out=out[0]);
+	Bit(in=indata[1],load=load,out=out[1]);
+	Bit(in=indata[2],load=load,out=out[2]);
+	Bit(in=indata[3],load=load,out=out[3]);
+
     DFF(in=alpha,out=o);
     DFF(in=o,out=oo);
     DFF(in=oo,out=ooo);
