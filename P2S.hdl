@@ -14,7 +14,8 @@ CHIP P2S {
     DFF(in=ooo,out=oooo);
 
     And(a=enable,b=alpha,out=a);
-    Nor(a=beta,b=gamma,out=alpha);
+    Or(a=beta,b=gamma,out=Notalpha);
+    Not(in=Notalpha,out=alpha);
     Or(a=o,b=oo,out=beta);
     Or(a=ooo,b=oooo,out=gamma);
 
