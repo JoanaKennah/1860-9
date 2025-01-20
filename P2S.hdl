@@ -11,8 +11,8 @@ CHIP P2S {
 
     And(a=enable,b=alpha,out=a);
     Nor(a=beta,c=gamma,out=alpha);
-    Or(a=Shift[0],b=Shift[1],out=beta);
-    Or(a=Shift[2],b=Shift[3],out=gamma);
+    Or(a=o,b=oo,out=beta);
+    Or(a=ooo,b=oooo,out=gamma);
 
     And(a=Register[0], b=o, out=w);
     And(a=Register[1], b=oo, out=x);
