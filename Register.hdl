@@ -3,9 +3,9 @@ CHIP Register {
     OUT out[4];
 
     PARTS:
-	Bit(indata[0]=indata[0],load=load,out=out[0]);
-	Bit(indata[0]=indata[1],load=load,out=out[1]);
-	Bit(indata[0]=indata[2],load=load,out=out[2]);
-	Bit(indata[0]=indata[3],load=load,out=out[3]);
+	Bit(in=indata[0],load=load,out=out[0]);
+	Bit(in=indata[1],load=load,out=out[1]);
+	Bit(in=indata[2],load=load,out=out[2]);
+	Bit(in=indata[3],load=load,out=out[3]);
 
 }
