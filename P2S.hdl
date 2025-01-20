@@ -26,8 +26,7 @@ CHIP P2S {
 
     Or(a=w,b=x,out=phi);
     Or(a=y,b=z,out=pi);
-    Or(a=phi,b=pi,out=s);
-    Not(in=s,out=sout);
+    Or(a=phi,b=pi,out=sout);
     And(a=z,b=z,out=complete);
 
 }
