@@ -1,8 +1,9 @@
 CHIP P2S {
     IN indata[4], enable, load;
     OUT sout, complete;
-
     PARTS:
+
+    
     Register(in[0]=indata[0], in[1]=indata[1], in[2]=indata[2], in[3]=indata[3], load=load, out[0]=bit0, out[1]=bit1, out[2]=bit2, out[3]=bit3);
 
     And(a=enable, b=alpha, out=a);
