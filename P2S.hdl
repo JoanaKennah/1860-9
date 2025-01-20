@@ -5,7 +5,7 @@ CHIP P2S {
     PARTS:
     Register(in[0]=indata[0],in[1]=indata[1],in[2]=indata[2],in[3]=indata[3],load=load,out=bit0,out=bit1,out=bit2,out=bit3);
 
-    DFF(in=alpha,out=o);
+    DFF(in=a,out=o);
     DFF(in=o,out=oo);
     DFF(in=oo,out=ooo);
     DFF(in=ooo,out=oooo);
@@ -24,6 +24,6 @@ CHIP P2S {
     Or(a=w,b=x,out=phi);
     Or(a=y,b=z,out=pi);
     Or(a=phi,b=pi,out=sout);
-    And(a=z,b=z,out=complete);
+    And(a=oooo,b=oooo,out=complete);
 
 }
