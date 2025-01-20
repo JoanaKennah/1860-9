@@ -1,0 +1,9 @@
+CHIP Clock {
+    IN in, load;
+    OUT out;
+
+    PARTS:
+    DFF(in=in, out=internal);
+    Mux(a=internal, b=in, sel=load, out=dff_input);
+    DFF(in=dff_input, out=out);
+}

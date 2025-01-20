@@ -1,24 +1,27 @@
 CHIP P2S {
     IN indata[4], enable, load;
-    OUT sout, complete:
+    OUT sout, complete;
 
     PARTS:
-    Register(in=indata[4], load=load);
-    Shift(in=in, enable=enable);
+    Register(indata=indata[4], load=load, out=out[4]);
+    DFF(in=alpha,out=o);
+    DFF(in=o,out=oo);
+    DFF(in=oo,out=ooo);
+    DFF(in=ooo,out=oooo);
 
-    And(a=Register[0], b=Shift[0], out=w);
-    And(a=Register[1], b=Shift[1], out=x);
-    And(a=Register[2], b=Shift[2], out=y);
-    And(a=Register[3], b=Shift[3], out=z);
-    Or(a=w, b=x, out=m);
-    Or(a=y, b=z, out=n);
-    Or(a=m, b=n, out=sout);
+    And(a=enable,b=alpha,out=a);
+    Nor(a=beta,c=gamma,out=alpha);
+    Or(a=Shift[0],b=Shift[1],out=beta);
+    Or(a=Shift[2],b=Shift[3],out=gamma);
 
-    if Shift[3] == 1 then complete=complete;
+    And(a=Register[0], b=o, out=w);
+    And(a=Register[1], b=oo, out=x);
+    And(a=Register[2], b=ooo, out=y);
+    And(a=Register[3], b=oooo, out=z);
+
+    Or(a=w,b=x,out=phi);
+    Or(a=y,b=z,out=pi);
+    Or(a=phi,b=pi,out=sout);
+    And(a=z,b=z,out=complete);
 
 }
-
-#register to hold 4-bits, when enable is == 1 then send through 1 in shift, if shift has even a singular 1 turn enable off (using OR gates)
-#move 1 in shift along each clock cycle, if 1 is in S0 then send out R0 and so on
-#AND gate on S0 and R0 (and so on), and then OR gate on all AND answers to get sout
-#when S3==1 then complete=complete (the algorithm can finish)
