@@ -3,27 +3,24 @@ CHIP P2S {
     OUT sout, complete;
 
     PARTS:
-    Register(in[0]=indata[0],in[1]=indata[1],in[2]=indata[2],in[3]=indata[3],load=load,out=bit0,out=bit1,out=bit2,out=bit3);
+    Register(in[0]=indata[0], in[1]=indata[1], in[2]=indata[2], in[3]=indata[3], load=load, out[0]=bit0, out[1]=bit1, out[2]=bit2, out[3]=bit3);
 
-    DFF(in=a,out=o);
-    DFF(in=o,out=oo);
-    DFF(in=oo,out=ooo);
-    DFF(in=ooo,out=oooo);
-
-    And(a=enable,b=alpha,out=a);
-    Or(a=beta,b=gamma,out=Notalpha);
-    Not(in=Notalpha,out=alpha);
-    Or(a=o,b=oo,out=beta);
-    Or(a=ooo,b=oooo,out=gamma);
+    And(a=enable, b=alpha, out=a);
+    Nor(a=beta,b=gamma,out=alpha);
+    Or(a=o, b=oo, out=beta);
+    Or(a=ooo, b=oooo, out=gamma);
+    DFF(in=a, out=o);
+    DFF(in=o, out=oo);
+    DFF(in=oo, out=ooo);
+    DFF(in=ooo, out=oooo);
 
     And(a=bit0, b=o, out=w);
     And(a=bit1, b=oo, out=x);
     And(a=bit2, b=ooo, out=y);
     And(a=bit3, b=oooo, out=z);
-
-    Or(a=w,b=x,out=phi);
-    Or(a=y,b=z,out=pi);
-    Or(a=phi,b=pi,out=sout);
-    And(a=oooo,b=oooo,out=complete);
+    Or(a=w, b=x, out=phi);
+    Or(a=y, b=z, out=pi);
+    Or(a=phi, b=pi, out=sout);
+    And(a=oooo, b=oooo, out=complete);
 
 }
